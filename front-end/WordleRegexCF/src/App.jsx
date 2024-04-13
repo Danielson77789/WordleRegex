@@ -1,15 +1,19 @@
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import viteLogo from '/vite.svg'
+import Login from './pages/login'
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
 
   return (
-    <div> className="App"
-      <h1>Wordle Regex</h1>
-    </div>
+    <Router>
+      <Routes>
+        <Route path='/' element={<Login></Login>}></Route>
+      </Routes>
+    </Router>
 
 
   /*  <>
