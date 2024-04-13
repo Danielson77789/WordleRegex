@@ -1,0 +1,25 @@
+.login-card {
+    background-color: white;
+    width: 400px;
+    height: 400px;
+}
+
+.login-header {
+    padding: 20px;
+    font-size: 30px;
+    color: black;
+}
+
+.username-field {
+    width: 300px;
+    height: 20px;
+}
+
+.input-header {
+    color: black;
+}
+
+.sub-button {
+    margin: 20px;
+    border-radius: 0px;
+}

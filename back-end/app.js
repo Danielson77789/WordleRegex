@@ -11,6 +11,16 @@ app.get('/users', async (req, res) => {
     res.json(users)
 })
 
+app.post('/login', async (req,res) => {
+    const {username,password} = req.get();
+    const userFound = user.findOne({where: {username: username}})
+    if (userFound.password == password) {
+        res.send(userFound).status(200)
+    } else {
+        res.send(userFound).status(404)
+    }
+})
+
 app.post('/register', async (req, res) => {
     const { username, password, email } = req.body;
     const newUser = await user.create({ username, password, email });
