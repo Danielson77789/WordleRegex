@@ -1,0 +1,49 @@
+body {
+    background-color: black;
+}
+
+.main-card {
+    background-color: black;
+    display: flex;
+
+
+}
+
+.input-card { 
+    width: 500px;
+    height: 800px;
+    margin: 20px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.game-card {
+    width: 500px;
+    height: 800px;
+    margin: 20px;
+    background-color: grey;
+    display: flex;
+    flex-direction: column;
+}
+
+.good {
+    color: greenyellow;
+}
+
+.bad {
+    color: red;
+}
+/* 
+#test {
+    background-color: ;
+} */
+
+.no-diplay {
+    display: none;
+}
+
+.display {
+    font-size: 20px;
+}

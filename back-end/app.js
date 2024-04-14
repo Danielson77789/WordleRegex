@@ -1,25 +1,31 @@
-const express = require('express');
+var cors = require('cors')
+var express = require('express')    
 const { user,score,game } = require('./models');
 const { Sequelize, Op } = require('sequelize');
 
-
 const app = express();
 app.use(express.json());
+app.use(cors())
 
 app.get('/users', async (req, res) => {
     const users = await user.findAll()
     res.json(users)
 })
 
-app.post('/login', async (req,res) => {
-    const {username,password} = req.get();
-    const userFound = user.findOne({where: {username: username}})
-    if (userFound.password == password) {
-        res.send(userFound).status(200)
-    } else {
-        res.send(userFound).status(404)
+app.post('/login', async (req, res) => {
+    const { username, password } = req.body;
+    try {
+        const userFound = await user.findOne({ where: { username: username } });
+        if (userFound && userFound.password === password) {
+            res.status(200).send({userFound});
+        } else {
+            res.status(401).send({ message: 'Authentication failed' });
+        }
+    } catch (error) {
+        res.status(500).send({ message: 'Server error' });
     }
-})
+});
+
 
 app.post('/register', async (req, res) => {
     const { username, password, email } = req.body;
@@ -39,7 +45,7 @@ app.post('/submit', async (req,res) => {
 })
 
 app.post('/find-game', async (req,res) => {
-    const { day } = req.body; // Ensure 'day' is in 'YYYY-MM-DD' format
+    const { day } = req.body;
 
     try {
         const challenge = await game.findOne({

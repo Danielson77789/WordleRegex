@@ -3,17 +3,28 @@ import reactLogo from './assets/react.svg'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import viteLogo from '/vite.svg'
 import Login from './pages/login'
+import Game from './pages/game'
+import Cookies from 'js-cookie';
+import RouteGuard from './pages/RouteGuard';
+
 import './App.css'
 
 function App() {
   const [count, setCount] = useState(0)
+  const isAuthenticated = Cookies.get('logged_in');
 
   return (
     <Router>
       <Routes>
-        <Route path='/' element={<Login></Login>}></Route>
+        {/* <Route path='/' element={<Login></Login>}></Route>
+        <Route path='/game' element={<Game></Game>}></Route> */}
+        <Route path='/' element={<RouteGuard />}></Route>
+        {/* Direct routes if needed, but RouteGuard manages the primary logic */}
+        <Route path='/login' element={<Login />}></Route>
+        <Route path='/game' element={<Game />}></Route>
       </Routes>
     </Router>
+    
 
 
   /*  <>
